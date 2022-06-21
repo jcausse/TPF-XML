@@ -1,2 +1,6 @@
 .vscode/*
 .DS_Store
+artist_info.xml
+artist_info_aux.xml
+recordings_info.xml
+recordings_info_aux.xml
