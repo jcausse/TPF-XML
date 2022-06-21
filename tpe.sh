@@ -8,6 +8,7 @@ curl -o recordings_info_aux.xml https://musicbrainz.org/ws/2/recording?query=ari
 
 sleep 1
 
+# quizas es mejor dejar el metadata y sacar solo los atributos
 sed 's/<metadata xmlns="http:\/\/musicbrainz\.org\/ns\/mmd-2\.0#">//g;s/<\/metadata>//g' artist_info_aux.xml > artist_info.xml
 
 sleep 1
