@@ -7,12 +7,24 @@ error = 0
 if [$# -ne 1]
 then 
     error_string = "<error>Invalid amount of parameters: only one param artist id permitted.</error>"
+    error = 1
+fi
+
+# assignation of parameter
+ARTIST_ID=$1
+
+if [grep "<artist arid=\"$ARTIST_ID\"/>" artist_info.xml == 1] # 1 -> not found a match
+then 
+    error_string = $error_string"<error>Artist ID not found.</error>"
+    error = 1
+fi
+
+if [error == 1]
+then
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?><artist_data xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"artist_data.xsd\">$error_string</artist_data>" > "artist_data.xml"
     echo "Script executed with errors."
-else
 
-    # assignation of parameter
-    ARTIST_ID=$1
+else
     
     CURL_ERROR = "<error>Could not connect with API https://musicbrainz.org. Not reacheable.</error>"
 
@@ -41,6 +53,8 @@ else
             # Deletion of auxiliar files
             rm artist_info_aux.xml
             rm recordings_info_aux.xml
+
+            echo "Finished execution."
 
         fi
     fi
