@@ -1,5 +1,15 @@
 #!/bin/sh 
 
+error_string = ''
+error = 0
+
+# validate parameters amount
+if [$# -ne 1]
+then 
+    error_string = $error_string "Invalid amount of parameters: only one param artist id permitted."
+    error = 1
+fi
+
 ARTIST_ID=$1
 
 curl -o artist_info_aux.xml https://musicbrainz.org/ws/2/artist/${ARTIST_ID}?inc=works
@@ -15,6 +25,7 @@ sleep 1
 
 sed 's/<metadata.*xmlns:ns2="http:\/\/musicbrainz\.org\/ns\/ext#-2\.0">//g;s/<\/metadata>//g;s/ns2:score="100"//g' recordings_info_aux.xml > recordings_info.xml
 
-# no funcionan los remove ...
-rm -rf artist_info_trash
-rm -rf recordings_info_trash
+
+# Deletion of auxiliar files
+rm artist_info_aux.xml
+rm recordings_info_aux.xml
