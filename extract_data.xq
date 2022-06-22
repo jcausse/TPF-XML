@@ -18,7 +18,7 @@
         
         <recordings>
         {
-            for $recording in doc("reordings_info.xml")/recording-list/recording
+            for $recording in doc("recordings_info.xml")/recording-list/recording
             order by $recording/title
             return
             <recording>
