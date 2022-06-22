@@ -19,7 +19,7 @@ then
     error=1
 fi
 
-if [ error==1 ]
+if [ error == 1 ]
 then
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?><artist_data xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"artist_data.xsd\">$error_string</artist_data>" > "artist_data.xml"
     echo "Script executed with errors."
