@@ -29,13 +29,13 @@ else
     CURL_ERROR="<error>Could not connect with API https://musicbrainz.org. Not reacheable.</error>"
 
     echo "Getting artist_info.xml..."
-    curl -o artist_info_aux.xml https://musicbrainz.org/ws/2/artist/${ARTIST_ID}?inc=works
+    curl -o "artist_info_aux.xml" "https://musicbrainz.org/ws/2/artist/${ARTIST_ID}?inc=works"
     if [ $? -ne 0 ]
     then    
         error_string=$CURL_ERROR
     else
         echo "Getting recordings_info.xml..."
-        curl -o recordings_info_aux.xml https://musicbrainz.org/ws/2/recording?query=arid:${ARTIST_ID}&limit=1000
+        curl -o "recordings_info_aux.xml" "https://musicbrainz.org/ws/2/recording?query=arid:${ARTIST_ID}&limit=1000"
         if [ $? -ne 0 ]
         then
             error_string=$CURL_ERROR

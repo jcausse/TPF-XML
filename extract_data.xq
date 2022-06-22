@@ -24,7 +24,7 @@
                 <length>{data($recording/length)}</length>
                 <first-release-date>{data($recording/first-release-date)}</first-release-date>
                 {
-                for $release in $recording/release
+                for $release in $recording/release-list/release
                 return
                 <release>
                     <title>{data($release/title)}</title>
