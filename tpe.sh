@@ -8,6 +8,8 @@ if [ $# -ne 1 ]
 then 
     error_string="<error>Invalid amount of parameters: only one param artist id permitted.</error>"
     error=1
+    echo "Invalid amount of parameters: only one param artist id permitted."
+    exit 1
 fi
 
 # assignation of parameter
